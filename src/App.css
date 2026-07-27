@@ -74,6 +74,10 @@
     padding-left: 52px;
 }
 
+.pageNotFound{
+    padding-left: 52px;
+}
+
 .schedules-container{
     min-width: 0;
     display: grid;
@@ -144,7 +148,8 @@
 .sidebar-open > ul{
     display: grid;
     grid-template-columns: 100%;
-    padding-left: 10px;
+    padding-left: 0;
+
 }
 
 .sidebar-open > .logo-container{
@@ -153,17 +158,24 @@
 
 .sidebar-close > ul{
     display: grid;
+    justify-items: center;
     grid-template-columns: max-content;
-    padding-left: 0px;
+    padding-left: 0;
 }
 
 .item{
     list-style-type: none;
     font-size: 1rem;
-    margin: 16px 8px 16px 8px;
+    margin: 8px 0px 8px 0px;
+}
+
+.item > a{
+    text-decoration: none;
+    color: rgb(226, 232, 240);
 }
 .sidebar-item-container, .sidebar-item-container-selected{
     display: grid;
+    place-items: center;
     grid-template-columns: max-content max-content;
 }
 

@@ -1,5 +1,4 @@
 import { EventCalendar } from '@mui/x-scheduler/event-calendar'
-// import { SchedulerEvent } from '@mui/x-scheduler/models'
 import { useState } from 'react'
 import { StandaloneDayView } from '@mui/x-scheduler'
 
@@ -16,7 +15,7 @@ export default function Calendar(){
 
     return(
 
-        <div className='schedules-container'>
+        <main className='schedules-container'>
             <div style={{ overflowY:'auto', width: '100%', backgroundColor: "#e2e8f0", color: "black", padding: "8px"}}>
                 <EventCalendar 
                 events={events}
@@ -31,7 +30,7 @@ export default function Calendar(){
                 events={todaysEvents}
                 onEventsChange={setTodaysEvents}></StandaloneDayView>
             </div>
-        </div>
+        </main>
     )
 
 }

@@ -6,14 +6,10 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
-function SidebarItem({handleSidebarClick, title}){
-    return(
-        <li className="item">{title}</li>
-    )
-}
 
-export default function Sidebar({currentPage, handleSidebarClick}){
+export default function Sidebar(){
     
     const [sidebarClassName, setSidebarClassName] = useState("sidebar-close")
 
@@ -31,31 +27,96 @@ export default function Sidebar({currentPage, handleSidebarClick}){
 
     return(
         <>
-        <div className={sidebarClassName}>
+        <nav className={sidebarClassName}>
             <div className='logo-container'>
                {sidebarClassName === "sidebar-open" && <h1>YT Project Manager</h1>}<MenuOutlinedIcon onClick={handleSidebarClose}/>
             </div>
         <ul>
-            <div className={currentPage === "Home" ? 'sidebar-item-container-selected':'sidebar-item-container'} onClick={() => handleSidebarClick("Home")}>
-                <HomeIcon sx={{margin: "15px 5px 15px 5px"}}/>{ sidebarClassName === "sidebar-open" && <SidebarItem title="Home"/> }
-            </div>
-            <div className={currentPage === "Projects" ? 'sidebar-item-container-selected':'sidebar-item-container'} onClick={() => handleSidebarClick("Projects")}>
-                <WorkIcon sx={{margin: "15px 5px 15px 5px"}}/>{ sidebarClassName === "sidebar-open" && <SidebarItem handleSidebarClick={handleSidebarClick} title="Projects"/> }
-            </div>
-            <div className={currentPage === "Calendar" ? 'sidebar-item-container-selected':'sidebar-item-container'} onClick={() => handleSidebarClick("Calendar")}>
-                <CalendarMonthIcon sx={{margin: "15px 5px 15px 5px"}}/>{ sidebarClassName === "sidebar-open" && <SidebarItem handleSidebarClick={handleSidebarClick} title="Calendar"/> }
-            </div>
-            <div className='sidebar-item-container'>
-                <HelpCenterIcon sx={{margin: "15px 5px 15px 5px"}}/>{ sidebarClassName === "sidebar-open" && <SidebarItem handleSidebarClick={handleSidebarClick} title="Help"/> }
-            </div>
-            <div className='sidebar-item-container'>
-                <SettingsIcon sx={{margin: "15px 5px 15px 5px"}}/>{ sidebarClassName === "sidebar-open" && <SidebarItem handleSidebarClick={handleSidebarClick} title="Settings"/> }
-            </div>
-            <div className='sidebar-item-container'>
-                <LogoutIcon sx={{margin: "15px 5px 15px 5px"}}/>{ sidebarClassName === "sidebar-open" && <SidebarItem handleSidebarClick={handleSidebarClick} title="Logout"/> }
-            </div>
+            <li className='item'>
+                <NavLink to="/home"
+                    aria-label="Home"
+                    className={({isActive}) =>
+                    isActive ? 'sidebar-item-container-selected':'sidebar-item-container'
+                }
+            >
+                    <HomeIcon sx={{margin: "15px 5px 15px 5px"}}/>
+                    { sidebarClassName === 'sidebar-open' && (
+                        <span>Home</span>
+                    )}
+                    </NavLink>
+            </li>
+            
+            <li className='item'>
+                <NavLink to="/projects"
+                    aria-label='Projects'
+                    className={({isActive}) =>
+                    isActive ? 'sidebar-item-container-selected':'sidebar-item-container'
+                }
+            >
+                    <WorkIcon sx={{margin: "15px 5px 15px 5px"}}/>
+                    { sidebarClassName === 'sidebar-open' && (
+                        <span>Projects</span>
+                    )}
+                    </NavLink>
+            </li>
+
+            <li className='item'>
+                <NavLink to="/calendar"
+                aria-label='Calendar'
+                    className={({isActive}) =>
+                    isActive ? 'sidebar-item-container-selected':'sidebar-item-container'
+                }
+            >
+                    <CalendarMonthIcon sx={{margin: "15px 5px 15px 5px"}}/>
+                    { sidebarClassName === 'sidebar-open' && (
+                        <span>Calendar</span>
+                    )}
+                    </NavLink>
+            </li>
+
+            <li className='item'>
+                <NavLink to="/help"
+                aria-label='help'
+                    className={({isActive}) =>
+                    isActive ? 'sidebar-item-container-selected':'sidebar-item-container'
+                }
+            >
+                    <HelpCenterIcon sx={{margin: "15px 5px 15px 5px"}}/>
+                    { sidebarClassName === 'sidebar-open' && (
+                        <span>Help</span>
+                    )}
+                    </NavLink>
+            </li>
+
+            <li className='item'>
+                <NavLink to="/settings"
+                aria-label='settings'
+                    className={({isActive}) =>
+                    isActive ? 'sidebar-item-container-selected':'sidebar-item-container'
+                }
+            >
+                    <SettingsIcon sx={{margin: "15px 5px 15px 5px"}}/>
+                    { sidebarClassName === 'sidebar-open' && (
+                        <span>Settings</span>
+                    )}
+                    </NavLink>
+            </li>
+
+            <li className='item'>
+                <NavLink to="/logout"
+                aria-label='logout'
+                    className={({isActive}) =>
+                    isActive ? 'sidebar-item-container-selected':'sidebar-item-container'
+                }
+            >
+                    <LogoutIcon sx={{margin: "15px 5px 15px 5px"}}/>
+                    { sidebarClassName === 'sidebar-open' && (
+                        <span>Logout</span>
+                    )}
+                    </NavLink>
+            </li>
         </ul>
-        </div>
+        </nav>
         </>
     )
 }

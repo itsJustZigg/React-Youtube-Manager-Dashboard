@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useOutletContext } from "react-router-dom";
 import { Chart as ChartJS, plugins, Legend, Title, BarElement, ArcElement} from "chart.js"
 import { Bar , Doughnut} from 'react-chartjs-2'
 import  Button  from "@mui/material/Button"
@@ -124,24 +125,6 @@ function ProjectsTable({tableData, handleOpenModal}){
     )
 }
 
-function ProjectModal({handleCloseModal, foundProject}){
-    return(
-        <div className="modal-overlay" onClick={handleCloseModal}>
-            <div className="modal" onClick={(e) => e.stopPropagation()}>
-                <h1>Title:</h1>
-                <h2>{foundProject.projectName}</h2><EditIcon></EditIcon>
-                <h1>Thumbnail:</h1>
-                <img></img><Button variant="contained">Add/Change Image</Button>
-                <h1>Video Summary:</h1>
-                <p>There is one video game that Epic Games created in 2009 called The Adventures of Blabbity Bla: Return to the Land of Blabbity Bla.
-                    They hired 13 programmers, 10 voice actors, 4 animators, and sunk $1,000,000 into it. Everything was going good until somebody opened their email
-                    and accidentally unleashed a virus that deleted all the progress they had.
-                </p><EditIcon></EditIcon>
-                <p>Team Members: {foundProject.members}</p>
-            </div>
-        </div>
-    )
-}
 
 function NewProjectModal({handleCloseNewProjectModal, handleProjectForm}){
     return(
@@ -180,17 +163,15 @@ function NewProjectModal({handleCloseNewProjectModal, handleProjectForm}){
     )
 }
 
-export default function Projects({tableData}){
+export default function Projects(){
 
-    const [isModalOpen, setisModalOpen] = useState(false)
+    
     const [isNewProjectModalOpen, setIsNewProjectModalOpen] = useState(false)
+    const context = useOutletContext()
+    const tableData = context.tableData
+    const handleOpenModal = context.handleOpenModal
+    const isModalOpen = context.isModalOpen
 
-    const [foundProject, setFoundProject] = useState(null)
-
-    function handleOpenModal(id){
-        setFoundProject(tableData.find(project => project.id === id))
-        setisModalOpen(true)
-    }
 
     function handleCloseModal(){
         setisModalOpen(false)
@@ -219,7 +200,7 @@ export default function Projects({tableData}){
     }
 
     return(
-        <div className="projects-page">
+        <main className="projects-page">
             <NewProjectBtn handleClick={handleNewProjectClick}></NewProjectBtn>
             <div className="project-charts-container">
                 <BarChartCard />
@@ -229,8 +210,8 @@ export default function Projects({tableData}){
             <div className="project-table-container">
                 <ProjectsTable tableData={tableData} handleOpenModal={handleOpenModal}></ProjectsTable>
             </div>
-            { isModalOpen === true && <ProjectModal handleCloseModal={handleCloseModal} foundProject={foundProject}></ProjectModal> }
+            
             { isNewProjectModalOpen === true && <NewProjectModal handleCloseNewProjectModal={handleCloseNewProjectModal} handleProjectForm={handleProjectForm}></NewProjectModal>}
-        </div>
+        </main>
     )
 }

@@ -1,8 +1,11 @@
 import { TextField } from "@mui/material"
 import { Autocomplete } from "@mui/material"
 import { useState } from "react"
+import { useOutletContext } from "react-router-dom"
 
-export default function SearchBar({handleOpenModal, tableData}){
+
+export default function SearchBar({tableData, handleOpenModal}){
+    
     
     const [searchValue, setSearchValue] = useState('')
     
@@ -27,11 +30,12 @@ export default function SearchBar({handleOpenModal, tableData}){
         }}
         freeSolo
         options={tableData.map((option) => option.projectName)}
-        renderInput={(params) => <TextField  {...params} placeholder="Search for a project..."
+        renderInput={(params) => 
+        <TextField  {...params} label="Search for a Project..." size="small" 
+        
             sx={{"& .MuiOutlinedInput-root": {
                 borderRadius: "12px", 
                 color: "rgb(226, 232, 240)", 
-                height: "26px",
             "& fieldset": {
                 borderColor: "rgb(46, 51, 71)", 
             },
@@ -51,13 +55,12 @@ export default function SearchBar({handleOpenModal, tableData}){
             "& .MuiOutlinedInput-input": {
                 padding: "0 8px",
             },
+            "& .MuiFormLabel-root": {
+                color: "rgb(226, 232, 240)",
+            },
         }}  
         />}
         />
-        {/* <input 
-        //onChange={}have the projects titles show up under the search bar
-        //as the search gets closer or 'no results found' if nothing turned up
-        type="text" placeholder="Search for a project..."></input> */}
         </div>
     )
 }

@@ -1,3 +1,4 @@
+import { useOutletContext } from "react-router-dom";
 import { Line } from "react-chartjs-2"
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, plugins} from "chart.js"
 import { Timeline } from '@mui/lab';
@@ -179,10 +180,13 @@ function ProjectHistoryTimeline(){
     )
 }
 
-export default function Home({tableData}){
+export default function Home(){
+
+    const context = useOutletContext()
+    const tableData = context.tableData
 
     return(
-        <div className="home">
+        <main className="home">
         <StatBar>
             <StatCard name="Subscribers" stat="25,937" statGrowth="+235"><SubscriptionsOutlinedIcon/></StatCard>
             <StatCard name="Revenue" stat="$18,233" statGrowth="+$1,300"><PaidIcon/></StatCard>
@@ -199,7 +203,6 @@ export default function Home({tableData}){
                 <ProjectHistoryTimeline></ProjectHistoryTimeline>
             </ProjectHistoryCard>
         </ProjectsSummaryCard> 
-        
-        </div>
+        </main>
     )
 }

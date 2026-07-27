@@ -1,14 +1,12 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Sidebar from './components/sidebar'
 import Header from './components/header'
 import ThemeSelector from './components/themeSelector'
-import Home from './pages/home'
-import Projects from './pages/projects'
-import Calendar from './pages/calendar'
 import  Button  from "@mui/material/Button"
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
+import { Outlet, useLocation } from 'react-router-dom'
 
 function ProjectModal({handleCloseModal, foundProject}){
     return(
@@ -32,6 +30,8 @@ function ProjectModal({handleCloseModal, foundProject}){
 function App() {
   
   const [currentPage, setCurrentPage] = useState("Home")
+  const location = useLocation()
+
   const [foundProject, setFoundProject] = useState(null)
   const [isModalOpen, setisModalOpen] = useState(false)
   const [tableData, setTableData] = useState([ 
@@ -48,9 +48,11 @@ function App() {
     ])
 
 
-  function handleSidebarClick(page){
-    setCurrentPage(page)
-  }
+    useEffect(() => {
+      const path = location.pathname
+      setCurrentPage(path.substring(1).charAt(0).toUpperCase() + path.slice(2))
+      console.log(`User has entered ${currentPage} page`)
+    },[location])
 
   function handleOpenModal(id){
         setFoundProject(tableData.find(project => project.id === id))
@@ -63,13 +65,10 @@ function App() {
 
   return (
     <>
-      <Header tableData={tableData} handleOpenModal={handleOpenModal} pageHeader={currentPage}/>
-      <Sidebar currentPage={currentPage}
-      handleSidebarClick={handleSidebarClick}/>
-      { isModalOpen === true && <ProjectModal handleCloseModal={handleCloseModal} foundProject={foundProject}></ProjectModal> }
-      {currentPage ==="Home" && <Home tableData={tableData}></Home>}
-      {currentPage ==="Projects" && <Projects tableData={tableData}></Projects>}
-      {currentPage ==="Calendar" && <Calendar></Calendar>}
+      <Header pageHeader={currentPage} tableData={tableData} handleOpenModal={handleOpenModal} /> 
+      <Sidebar />
+      <Outlet context={{tableData, setTableData, handleOpenModal, isModalOpen}} />
+      { isModalOpen === true && <ProjectModal foundProject={foundProject} handleCloseModal={handleCloseModal}></ProjectModal> }
     </>
   )
 }
