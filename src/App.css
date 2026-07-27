@@ -63,11 +63,7 @@
     margin: 0 var(--spacing-sm) 0 var(--spacing-sm);
 }
 
-/* .searchbar > .search-input{
-    padding: 0 var(--spacing-sm) 0 var(--spacing-sm);
-    border: 0;
-    border-radius: 12px;
-} */
+
 
 .home{
     min-width: 0;
