@@ -131,25 +131,30 @@ function NewProjectModal({handleCloseNewProjectModal, handleProjectForm}){
         <div className="modal-overlay" onClick={handleCloseNewProjectModal}>
             <div className="modal" onClick={(e) => e.stopPropagation()}>
                 <form onSubmit={handleProjectForm}>
-                    <h1>Title: </h1>
+                    {/* <h1>Title: </h1> */}
+                    <label htmlFor="title">Title:</label>
                     <input 
                     onClick={(e) => e.stopPropagation()}
                     id="title" 
                     name="title" type="text" 
                     placeholder="Please type in the title of your video"></input>
-                    <h1>Add a Thumbnail Image</h1>
+                    {/* <h1>Add a Thumbnail Image</h1> */}
+                    <label htmlFor="thumbnail">Add a Thumbnail Image</label>
                     <input 
                     onClick={(e) => e.stopPropagation()}
                     id="thumbnail" type="file" name="thumbnail" accept="image/png, image/jpeg" />
-                    <h1>Video Summary</h1>
+                    {/* <h1>Video Summary</h1> */}
+                    <label htmlFor="summary">Video Summary</label>
                     <textarea 
                     onClick={(e) => e.stopPropagation()}
                     id="summary" name="summary" placeholder="Write a 2-3 sentence summary to tell everyone what your video is about"></textarea>
-                    <h1>Team Members</h1>
+                    {/* <h1>Team Members</h1> */}
+                    <label htmlFor="members">Team Members:</label>
                     <input 
                     onClick={(e) => e.stopPropagation()}
                     id="members" type="text" name="members" placeholder="Which team members will you assign this project to"></input>
-                    <h1>Due Date:</h1>
+                    {/* <h1>Due Date:</h1> */}
+                    <label htmlFor="dueDate">Due Date:</label>
                     <input 
                     onClick={(e) => e.stopPropagation()}
                     type="date" id="dueDate" name="dueDate"></input>

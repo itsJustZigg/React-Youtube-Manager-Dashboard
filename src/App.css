@@ -387,6 +387,12 @@ td:nth-child(3){
     margin-bottom: var(--spacing-md)
 }
 
+.modal > form > label{
+    font-size: 20pt;
+    font-weight: bold;
+    margin: 16px 0px;
+}
+
 .modal > form > textarea{
     border: var(--border);
     padding: var(--spacing-sm);
