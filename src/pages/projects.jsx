@@ -174,6 +174,7 @@ export default function Projects(){
     const [isNewProjectModalOpen, setIsNewProjectModalOpen] = useState(false)
     const context = useOutletContext()
     const tableData = context.tableData
+    const setTableData = context.setTableData
     const handleOpenModal = context.handleOpenModal
     const isModalOpen = context.isModalOpen
 
