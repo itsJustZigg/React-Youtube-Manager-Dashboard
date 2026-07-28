@@ -1,7 +1,7 @@
 import { EventCalendar } from '@mui/x-scheduler/event-calendar'
 import { useState } from 'react'
 import { StandaloneDayView } from '@mui/x-scheduler'
-
+import { createTheme, ThemeProvider } from '@mui/material'
 export default function Calendar(){
     
     const [events, setEvents] = useState([
@@ -13,22 +13,45 @@ export default function Calendar(){
         {id: 1, title: 'Secret Easter Eggs in Droid Tycoon', start: '2026-05-20T14:30:00', end:'2026-05-20T15:30:00'}
     ])
 
+    const theme = createTheme({
+        palette: {
+            primary: {
+            main: "rgb(16, 76, 135)",
+            },
+        },
+        })
+
     return(
 
         <main className='schedules-container'>
-            <div style={{ overflowY:'auto', width: '100%', backgroundColor: "#e2e8f0", color: "black", padding: "8px"}}>
+            <div style={{ overflowY:'auto', width: '100%', backgroundColor: "#e2e8f0", color: "black", padding: "8px"}}>  
                 <EventCalendar 
                 events={events}
                 views={['week', 'month']}
                 onEventsChange={setEvents}
                 defaultVisibleDate='2026-05-20T14:00:00'
+                sx={{"& .MuiEventCalendar-miniCalendarWeekdayCell[data-weekend='true']": {
+                    color: 'rgb(151, 21, 20)',
+                },
+                    "& .MuiButton-text": {
+                    color: 'black',
+                },
+                    "& .MuiEventCalendar-miniCalendarDayButton[data-other-month='true']": {
+                        color: '#464d57',
+                },
+                
+            }}
                 />
             </div>
             <div style={{overflowY:'auto', backgroundColor: "#e2e8f0", padding: "8px"}}>
                 <h1 style={{color: "black"}}>Today's Tasks</h1>
                 <StandaloneDayView 
                 events={todaysEvents}
-                onEventsChange={setTodaysEvents}></StandaloneDayView>
+                onEventsChange={setTodaysEvents}
+                sx={{"& .MuiEventCalendar-dayTimeGridHeaderDayName": {
+                            color: 'rgb(16, 76, 135)',
+                    },   
+                }}></StandaloneDayView>
             </div>
         </main>
     )
