@@ -13,14 +13,6 @@ export default function Calendar(){
         {id: 1, title: 'Secret Easter Eggs in Droid Tycoon', start: '2026-05-20T14:30:00', end:'2026-05-20T15:30:00'}
     ])
 
-    const theme = createTheme({
-        palette: {
-            primary: {
-            main: "rgb(16, 76, 135)",
-            },
-        },
-        })
-
     return(
 
         <main className='schedules-container'>
