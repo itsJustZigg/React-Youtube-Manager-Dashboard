@@ -123,14 +123,14 @@ function ProjectsTable({tableData}){
         <table>
             <thead>
                 <tr>
-                    <th>Project Name</th>
-                    <th>Members</th>
-                    <th>Completion</th>
+                    <th scope="col">Project Name</th>
+                    <th scope="col">Members</th>
+                    <th scope="col">Completion</th>
                 </tr>
             </thead>
             <tbody>
                 {recentProjects.map((project) => ( 
-                    <tr key={project.id}>
+                    <tr scope="row" key={project.id}>
                         <td>{project.projectName}</td>
                         <td>{project.members}</td>
                         <td><progress value={Number(project.completion.slice(0, project.completion.length - 1))} max={100}></progress>{project.completion}</td>
