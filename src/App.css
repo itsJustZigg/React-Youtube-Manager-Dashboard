@@ -218,8 +218,11 @@
     gap: var(--spacing-sm);
 }
 
-.projectstable-container > h2{
+.projectstable-container table > caption{
     padding: var(--spacing-sm);
+    margin: 0.8em 0px;  
+    font-weight: bold;
+    font-size: 1.5em;
 }
 
 .projectstable-container{
@@ -263,6 +266,8 @@
     overflow-x: auto;
     width: 100%;
     margin-top: var(--spacing-sm);
+    background-color: var(--bg-surface);
+    border: var(--border);
 }
 
 table {
@@ -277,6 +282,12 @@ table {
 
 }
 
+table > caption{
+    padding: var(--spacing-sm);
+    margin: 0.8em 0px;  
+    font-weight: bold;
+    font-size: 1.5em;
+}
 
 tbody tr:nth-child(odd){
     background-color: var(--table-stripe);

@@ -119,8 +119,8 @@ function ProjectsTable({tableData}){
     
     return(
         <div className="projectstable-container">
-        <h2>Recent Projects</h2>
         <table>
+            <caption>Recent Projects</caption>
             <thead>
                 <tr>
                     <th scope="col">Project Name</th>
