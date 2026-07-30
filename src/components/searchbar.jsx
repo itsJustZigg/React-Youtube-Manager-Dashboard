@@ -31,8 +31,10 @@ export default function SearchBar({tableData, handleOpenModal}){
         freeSolo
         options={tableData.map((option) => option.projectName)}
         renderInput={(params) => 
-        <TextField  {...params} label="Search for a Project..." size="small" 
-        
+        <TextField  {...params} 
+            label="Search for a Project..." size="small" 
+            helperText="Search by project title"
+
             sx={{"& .MuiOutlinedInput-root": {
                 borderRadius: "12px", 
                 color: "rgb(226, 232, 240)", 
