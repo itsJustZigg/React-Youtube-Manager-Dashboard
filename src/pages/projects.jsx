@@ -1,10 +1,11 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useOutletContext } from "react-router-dom";
 import { Chart as ChartJS, plugins, Legend, Title, BarElement, ArcElement} from "chart.js"
 import { Bar , Doughnut} from 'react-chartjs-2'
 import  Button  from "@mui/material/Button"
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
+import { FocusTrap } from 'focus-trap-react'
 
 
 ChartJS.register(BarElement, ArcElement, Title, Legend)
@@ -127,8 +128,19 @@ function ProjectsTable({tableData, handleOpenModal}){
 }
 
 
-function NewProjectModal({handleCloseNewProjectModal, handleProjectForm}){
+function NewProjectModal({isNewProjectModalOpen, handleCloseNewProjectModal, handleProjectForm}){
+
+    useEffect(() => {
+        if(isNewProjectModalOpen){
+            document.body.style.overflow = 'hidden'
+        }
+        return () => {
+            document.body.style.overflow = ''
+        }
+    }, [isNewProjectModalOpen])
+
     return(
+        <FocusTrap>
         <div className="modal-overlay" onClick={handleCloseNewProjectModal}>
             <div className="modal" onClick={(e) => e.stopPropagation()}>
                 <form onSubmit={handleProjectForm}>
@@ -161,6 +173,7 @@ function NewProjectModal({handleCloseNewProjectModal, handleProjectForm}){
                 </form>
             </div>
         </div>
+        </FocusTrap>
     )
 }
 
@@ -213,7 +226,7 @@ export default function Projects(){
                 <ProjectsTable tableData={tableData} handleOpenModal={handleOpenModal}></ProjectsTable>
             </div>
             
-            { isNewProjectModalOpen === true && <NewProjectModal handleCloseNewProjectModal={handleCloseNewProjectModal} handleProjectForm={handleProjectForm}></NewProjectModal>}
+            { isNewProjectModalOpen === true && <NewProjectModal isNewProjectModalOpen={isNewProjectModalOpen} handleCloseNewProjectModal={handleCloseNewProjectModal} handleProjectForm={handleProjectForm}></NewProjectModal>}
         </main>
     )
 }

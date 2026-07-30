@@ -7,9 +7,11 @@ import  Button  from "@mui/material/Button"
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import { Outlet, useLocation } from 'react-router-dom'
+import { FocusTrap } from 'focus-trap-react'
 
 function ProjectModal({handleCloseModal, foundProject}){
     return(
+      <FocusTrap>
         <div className="modal-overlay" onClick={handleCloseModal}>
             <div className="modal" onClick={(e) => e.stopPropagation()}>
                 <h1>Title:</h1>
@@ -24,6 +26,7 @@ function ProjectModal({handleCloseModal, foundProject}){
                 <p>Team Members: {foundProject.members}</p>
             </div>
         </div>
+      </FocusTrap>
     )
 }
 
