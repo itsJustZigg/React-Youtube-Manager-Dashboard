@@ -51,7 +51,6 @@ function App() {
     useEffect(() => {
       const path = location.pathname
       setCurrentPage(path.substring(1).charAt(0).toUpperCase() + path.slice(2))
-      console.log(`User has entered ${currentPage} page`)
     },[location])
 
   function handleOpenModal(id){
