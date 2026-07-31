@@ -98,12 +98,12 @@ function StatBar({children}){
 
 function StatCard({name, stat, statGrowth, children}){
     return(
-        <div tabIndex="0" className="statcard">
+        <section className="statcard">
         <div className="statcard-header">
             <h2>{name}</h2>{children}
         </div>
-        <h1>{stat}</h1><p>{statGrowth}</p>
-        </div>
+        <p className="current-stat">{stat}</p><p>{statGrowth}</p>
+        </section>
     )
 }
 

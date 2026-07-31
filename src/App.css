@@ -211,6 +211,10 @@
     display: inline;
 }
 
+.statcard > p.current-stat {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
 .chartsContainer{
     display: grid;
     grid-template-columns: 1fr 1fr;
