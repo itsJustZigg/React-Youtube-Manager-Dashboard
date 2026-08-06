@@ -45,12 +45,50 @@ function RevenueChartCard(){
     }
     
     return(
+        <>
+        <table className="screen-readers-only">
+            <caption>Revenue Gained Per Day</caption>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Revenue Gained</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Monday</td>
+                    <td>$1000</td>
+                </tr>
+                <tr>
+                    <td>Tuesday</td>
+                    <td>$500</td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td>$200</td>
+                </tr>
+                <tr>
+                    <td>Thursday</td>
+                    <td>$350</td>
+                </tr><tr>
+                    <td>Friday</td>
+                    <td>$800</td>
+                </tr><tr>
+                    <td>Saturday</td>
+                    <td>$700</td>
+                </tr><tr>
+                    <td>Sunday</td>
+                    <td>$900</td>
+                </tr>
+            </tbody>
+        </table>
         <div className="revenueChartCard">
             <Line 
             options={options}
             data={data}
             ></Line>
         </div>
+        </>
     )
 }
 
@@ -79,12 +117,50 @@ function SubsChartCard(){
     }
 
     return(
+        <>
+        <table className="screen-readers-only">
+            <caption>Number of Subscribers Gained Per Day</caption>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Subscribers Gained</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Monday</td>
+                    <td>3000</td>
+                </tr>
+                <tr>
+                    <td>Tuesday</td>
+                    <td>5000</td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td>4500</td>
+                </tr>
+                <tr>
+                    <td>Thursday</td>
+                    <td>6000</td>
+                </tr><tr>
+                    <td>Friday</td>
+                    <td>8000</td>
+                </tr><tr>
+                    <td>Saturday</td>
+                    <td>7000</td>
+                </tr><tr>
+                    <td>Sunday</td>
+                    <td>9000</td>
+                </tr>
+            </tbody>
+        </table>
         <div className="subsChartCard">
         <Line
             data={data}
             options={options}
         />
         </div>
+        </>
     )
 }
 

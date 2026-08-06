@@ -51,11 +51,55 @@ function BarChartCard(){
     }
     
     return(
+        <>
+        <table className="screen-readers-only">
+            <caption>Tasks Completed Per Day</caption>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Tasks Completed</th>
+                    <th>Tasks Under Review</th>
+                    <th>Tasks in Progress</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Monday</td>
+                    <td>50</td>
+                    <td>135</td>
+                    <td>35</td>
+                </tr>
+                <tr>
+                    <td>Tuesday</td>
+                    <td>100</td>
+                    <td>120</td>
+                    <td>65</td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td>75</td>
+                    <td>90</td>
+                    <td>125</td>
+                </tr>
+                <tr>
+                    <td>Thursday</td>
+                    <td>130</td>
+                    <td>60</td>
+                    <td>43</td>
+                </tr><tr>
+                    <td>Friday</td>
+                    <td>150</td>
+                    <td>75</td>
+                    <td>109</td>
+                </tr>
+            </tbody>
+        </table>
         <div className="projectsBarChart">
             <Bar 
             options={options}
             data={data} />
         </div>
+        </>
     )
 }
 
@@ -92,11 +136,33 @@ function DonutChartCard(){
     }
 
     return(
+        <>
+        <table className="screen-readers-only">
+            <caption>Tasks Today</caption>
+            <thead>
+                <tr>
+                    <th>Completed</th>
+                    <th>Under Review</th>
+                    <th>In Progress</th>
+                    <th>To Do</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>250</td>
+                    <td>150</td>
+                    <td>108</td>
+                    <td>75</td>
+                </tr>
+            </tbody>
+        </table>
         <div className="donutChartCard">
             <Doughnut
             data={data}
             options={options}></Doughnut>
         </div>
+        </>
     )
 }
 
