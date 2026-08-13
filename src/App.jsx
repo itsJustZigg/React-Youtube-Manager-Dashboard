@@ -33,6 +33,7 @@ function ProjectModal({handleCloseModal, foundProject}){
 function App() {
   
   const [currentPage, setCurrentPage] = useState("Home")
+  const [theme, setTheme] = useState("os-default")
   const location = useLocation()
 
   const [foundProject, setFoundProject] = useState(null)
@@ -56,18 +57,36 @@ function App() {
       setCurrentPage(path.substring(1).charAt(0).toUpperCase() + path.slice(2))
     },[location])
 
+    useEffect(() => {
+      const htmlDoc = document.documentElement
+      console.log("theme selector useEffect activated")
+      if(theme === "os-default"){
+        htmlDoc.removeAttribute("data-theme")
+        console.log("no attribute on root")
+      }
+      else{
+        htmlDoc.setAttribute("data-theme", theme)
+      }
+    }, [theme])
+
   function handleOpenModal(id){
-        setFoundProject(tableData.find(project => project.id === id))
-        setisModalOpen(true)
+      setFoundProject(tableData.find(project => project.id === id))
+      setisModalOpen(true)
   }
   
   function handleCloseModal(){
-        setisModalOpen(false)
+      setisModalOpen(false)
     }
+
+  function handleThemeChange(e){
+    const selectedTheme = e.target.value
+    setTheme(selectedTheme)
+  }  
 
   return (
     <>
-      <Header pageHeader={currentPage} tableData={tableData} handleOpenModal={handleOpenModal} /> 
+      <Header handleThemeChange={handleThemeChange} 
+      pageHeader={currentPage} tableData={tableData} handleOpenModal={handleOpenModal} /> 
       <Sidebar />
       <Outlet context={{tableData, setTableData, handleOpenModal, isModalOpen}} />
       { isModalOpen === true && <ProjectModal foundProject={foundProject} handleCloseModal={handleCloseModal}></ProjectModal> }

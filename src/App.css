@@ -1,42 +1,57 @@
-@media(prefers-color-scheme: light){
-    body{
-        background-color: rgb(255, 255, 255);
-        color: rgb(66, 71, 85);
-        font-family: "Inter", system-ui, sans-serif;
-    }
-    
-    :root{
-        --bg-primary: rgb(250, 250, 250) ;
-        --bg-surface: rgb(247, 247, 247);
-        --border: 1px solid rgb(215, 215, 219);
-        --table-stripe: #e7e4e4;
-        --hover-color: #e7e4e4;
-        --spacing-sm: 8px;
-        --spacing-md: 16px;
-        --accent: rgb(62, 50, 233);
-        --fontsize-sm: 12pt;
-    }
+body{
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: "Inter", system-ui, sans-serif;
+}
+
+:root{
+    --bg-primary: rgb(250, 250, 250); 
+    --bg-surface: rgb(247, 247, 247);
+    --border: 1px solid rgb(215, 215, 219);
+    --table-stripe: #e7e4e4;
+    --hover-color: #e7e4e4; 
+
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --accent: rgb(62, 50, 233);
+    --fontsize-sm: 12pt;
+    --text-primary: rgb(66, 71, 85);
 }
 
 @media(prefers-color-scheme: dark){
-    body{
-        background-color:rgb(15, 17, 23) ;
-        color: rgb(226, 232, 240);
-        font-family: "Inter", system-ui, sans-serif;
-    }
-
     :root{
         --bg-primary: rgb(15, 17, 23);
         --bg-surface: rgb(26, 29, 39);
         --table-stripe: rgb(22, 22, 34);
         --hover-color: rgb(22, 22, 34);
-        --border: 1px solid rgb(46, 51, 71);
-        --spacing-sm: 8px;
-        --spacing-md: 16px;
-        --accent: rgb(62, 50, 233);
-        --fontsize-sm: 12pt;   
+        --border: 1px solid rgb(46, 51, 71); 
+        --text-primary: rgb(226, 232, 240)
+    }
+
+    body{
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        font-family: "Inter", system-ui, sans-serif;
     }
     
+}
+
+[data-theme="light"] {
+    --bg-primary: rgb(250, 250, 250) ;
+    --bg-surface: rgb(247, 247, 247);
+    --border: 1px solid rgb(215, 215, 219);
+    --table-stripe: #e7e4e4;
+    --hover-color: #e7e4e4;
+    --text-primary: rgb(66, 71, 85);
+}
+
+[data-theme="dark"] {
+    --bg-primary: rgb(15, 17, 23);
+    --bg-surface: rgb(26, 29, 39);
+    --table-stripe: rgb(22, 22, 34);
+    --hover-color: rgb(22, 22, 34);
+    --border: 1px solid rgb(46, 51, 71);
+    --text-primary: rgb(226, 232, 240);
 }
 
 #root{
@@ -90,6 +105,7 @@
     height: 36px;
     margin-left: var(--spacing-sm);
 }
+
 
 .sidebar-open{
     position: fixed;
@@ -145,7 +161,6 @@
     display: grid;
     grid-template-columns: 100%;
     padding-left: 0;
-
 }
 
 .sidebar-open > .logo-container{
@@ -167,7 +182,7 @@
 
 .item > a{
     text-decoration: none;
-    color: rgb(226, 232, 240);
+    color: var(--text-primary);
 }
 .sidebar-item-container, .sidebar-item-container-selected{
     display: grid;

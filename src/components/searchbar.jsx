@@ -33,11 +33,10 @@ export default function SearchBar({tableData, handleOpenModal}){
         renderInput={(params) => 
         <TextField  {...params} 
             label="Search for a Project..." size="small" 
-            helperText="Search by project title"
-
+            helperText="Search for a project by video title"
             sx={{"& .MuiOutlinedInput-root": {
                 borderRadius: "12px", 
-                color: "rgb(226, 232, 240)", 
+                color: "var(--text-primary)", 
             "& fieldset": {
                 borderColor: "rgb(46, 51, 71)", 
             },
@@ -52,14 +51,25 @@ export default function SearchBar({tableData, handleOpenModal}){
             
         },
             "& .MuiAutocomplete-clearIndicator": {
-                color: "rgb(226, 232, 240)",
+                color: "var(--text-primary)",
             },
             "& .MuiOutlinedInput-input": {
                 padding: "0 8px",
             },
             "& .MuiFormLabel-root": {
-                color: "rgb(226, 232, 240)",
+                color: "var(--text-primary)",
             },
+            "& .MuiFormHelperText-root":{
+                position: 'absolute',
+                width: 1,
+                height: 1,
+                padding: 0,
+                margin: -1,
+                overflow: 'hidden',
+                clip: 'rect(0, 0, 0, 0)',
+                whiteSpace: 'nowrap',
+                border: 0,
+            }
         }}  
         />}
         />
