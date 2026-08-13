@@ -59,10 +59,8 @@ function App() {
 
     useEffect(() => {
       const htmlDoc = document.documentElement
-      console.log("theme selector useEffect activated")
       if(theme === "os-default"){
         htmlDoc.removeAttribute("data-theme")
-        console.log("no attribute on root")
       }
       else{
         htmlDoc.setAttribute("data-theme", theme)
