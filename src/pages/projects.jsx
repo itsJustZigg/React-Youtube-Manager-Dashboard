@@ -212,28 +212,22 @@ function NewProjectModal({isNewProjectModalOpen, handleCloseNewProjectModal, han
                 <form onSubmit={handleProjectForm}>
                     <label htmlFor="title">Title:</label>
                     <input 
-                    onClick={(e) => e.stopPropagation()}
                     id="title" 
                     name="title" type="text" 
                     placeholder="Please type in the title of your video"></input>
                     <label htmlFor="thumbnail">Add a Thumbnail Image</label>
                     <input 
-                    onClick={(e) => e.stopPropagation()}
                     id="thumbnail" type="file" name="thumbnail" accept="image/png, image/jpeg" />
                     <label htmlFor="summary">Video Summary</label>
                     <textarea 
-                    onClick={(e) => e.stopPropagation()}
                     id="summary" name="summary" placeholder="Write a 2-3 sentence summary to tell everyone what your video is about"></textarea>
                     <label htmlFor="members">Team Members:</label>
                     <input 
-                    onClick={(e) => e.stopPropagation()}
                     id="members" type="text" name="members" placeholder="Which team members will you assign this project to"></input>
                     <label htmlFor="dueDate">Due Date:</label>
                     <input 
-                    onClick={(e) => e.stopPropagation()}
                     type="date" id="dueDate" name="dueDate"></input>
                     <Button 
-                    onClick={(e) => e.stopPropagation()}
                     sx={{ backgroundColor: 'var(--accent)', margin:'var(--spacing-md'}}
                     variant="contained" type="submit">Save Project</Button>
                 </form>
